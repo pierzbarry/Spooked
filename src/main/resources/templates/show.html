@@ -1,41 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="base :: head"></head>
-<body class="background">
+<body>
 
 <!--Navigation-->
 <nav th:replace="base :: navbar"></nav>
 
-<div th:each="message : ${messages}">
-    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+
+    <div class="card text-white bg-secondary mb-3" th:src="${message.content}"  style="max-width: 18rem;">
         <div class="card-header"><h6>From: [[${message.sentby}]] on [[${message.date}]]</h6></div>
         <div class="card-body">
             <p class="card-text">[[${message.content}]]</p>
             <td>
                 <div>
                     <div th:if="${message.imageurl} != null">
+                    <div th:if="${message.imageurl} != ' '">
                         <img th:src="${message.imageurl}" class="img-thumbnail">
+                    </div>
                     </div>
                 </div>
             </td>
         </div>
     </div>
-    <a class="btn btn-danger btn-sm" th:href="@{/detail/{id}(id=${message.id})}"
-       role="button">Details</a>
-</div>
-
-<!--Image Slider-->
-<div id="slides" class="carousel slide" data-ride="carousel">
-
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="https://i.imgur.com/8oWDlQe.png" class="img-flip">
-            <!--            <div class="carousel-caption">-->
-            <!--                <h1 class="display-2">Brine</h1>-->
-            <!--            </div>-->
-        </div>
-    </div>
-</div>
+    <td>
+        <a class="btn btn-info" role="button" th:href="@{/update/{id}(id=${message.id})}">Update</a>
+        <a class="btn btn-info" role="button" th:href="@{/delete/{id}(id=${message.id})}">Delete</a>
+    </td>
 
 <!--Footer-->
 <footer th:replace="base :: footer"></footer>

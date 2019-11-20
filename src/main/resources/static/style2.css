@@ -7,6 +7,10 @@ html, body {
     height: 100%;
     width: 100%;
 }
+body {
+    background: url(https://i.imgur.com/qn4vTb5.png) repeat center fixed;
+    background-size: cover;
+}
 .intro {
     height: 100%;
     width: 100%;
@@ -16,6 +20,7 @@ html, body {
     display: table;
     top: 0;
 }
+
 .intro .inner {
     display: table-cell;
     vertical-align: middle;

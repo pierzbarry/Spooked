@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base :: head"></head>
+<body>
+
+<!--Navigation-->
+<nav th:replace="base :: navbar"></nav>
+
+
+<form action="#" th:action="@{/process}" th:object="${message}" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:field="*{id}" />
+    <input type="hidden" th:field="*{imageurl}" name="imageurl" />
+    <div class="container">
+        <div class="row">
+            <div class="col-0.5">
+            </div>
+            <div class="col-sm">
+                <br /><br/>
+
+                <div class="jumbotron">
+                    <div class="container">
+
+                        <label >Name: </label><br/>
+                        <input type="text" th:field="*{sentby}"><br/><br/>
+
+                        <label >Date: </label><br/>
+                        <input type="text" th:field="*{date}"><br/><br/>
+
+                        <label >Message: </label><br/>
+                        <textarea rows="5" th:field="*{content}" /><br/><br/>
+
+                        <div th:if="${message.imageurl} !=null">
+                            <img th:src="${message.imageurl}" style="height: 16rem; width: 20rem"/>
+                        </div>
+                        <label >Image Upload:</label><br/>
+                        <input type="file" name="file" th:src="${message.imageurl}"/><br/><br/>
+
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-dark">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!--Footer-->
+<footer th:replace="base :: footer"></footer>
+
+<!--Javascript links-->
+<th:block th:replace="base :: jslinks"></th:block>
+</body>
+</html>

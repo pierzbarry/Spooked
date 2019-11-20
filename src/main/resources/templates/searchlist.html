@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="base :: head"></head>
-<body class="background">
+<body>
 
 <!--Navigation-->
 <nav th:replace="base :: navbar"></nav>
+
+<!--Image Slider-->
+<div id="slides" class="carousel slide" data-ride="carousel">
+
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://res.cloudinary.com/dn5drwg3e/image/upload/v1574261898/background_heuacp.jpg" class="img-flip">
+            <!--            <div class="carousel-caption">-->
+            <!--                <h1 class="display-2">Brine</h1>-->
+            <!--            </div>-->
+        </div>
+    </div>
+</div>
 
 <div th:each="message : ${messages}">
     <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
@@ -24,18 +37,6 @@
        role="button">Details</a>
 </div>
 
-<!--Image Slider-->
-<div id="slides" class="carousel slide" data-ride="carousel">
-
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="https://i.imgur.com/8oWDlQe.png" class="img-flip">
-            <!--            <div class="carousel-caption">-->
-            <!--                <h1 class="display-2">Brine</h1>-->
-            <!--            </div>-->
-        </div>
-    </div>
-</div>
 
 <!--Footer-->
 <footer th:replace="base :: footer"></footer>

@@ -22,14 +22,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity security){
-        security.ignoring().antMatchers("/css/**","/images/**","/js/**", "/resources/**");
+        security.ignoring().antMatchers("/css/*","/images/*","/js/*", "/resources/*");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/login", "/*.css", "/*.png", "/*js", "/resources/**").permitAll()
+                .antMatchers("/login", "/*.css", "/*.png", "/*js", "static/*", "/base").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="base :: head"></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spook</title>
+    <link rel="icon" href="https://i.imgur.com/Pg3iQX4.png"/>
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <link href="css/animate.css" rel="stylesheet"/>
+    <link href="css/waypoints.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="/path/to/noframework.waypoints.min.js"></script>
+    <script src="https://kit.fontawesome.com/d0065a9586.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).on('click','.navbar-collapse.in',function(e) {
+            if( $(e.target).is('a') && ( $(e.target).attr('class') != 'dropdown-toggle'
+            ) ) {
+                $(this).collapse('hide');
+            }
+        });
+    </script>
+</head>
 <body>
 
 <!--Login Verification-->
