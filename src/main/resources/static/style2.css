@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Open+San:800|Poppins:500');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+.intro {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    background: url(https://i.imgur.com/a4i09PR.png) no-repeat 50% 50%;
+    background-size: cover;
+    display: table;
+    top: 0;
+}
+.intro .inner {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.content h1 {
+    font-family: 'Open Sans', sans-serif;
+    color: darkgrey;
+    font-size: 600%;
+    text-shadow: 2px 3px dimgray;
+    font-weight: 800;
+    margin: 10px;
+    z-index: 2;
+}
+.btn-danger {
+    font-family: 'Roboto', sans-serif;
+}
+.roboto {
+    font-family: 'Roboto', sans-serif;
+}
+.bounceInUp {
+    animation-duration: 3s;
+}
+.slow {
+    animation-delay: 0.3s;
+}
+.mover {
+    animation: swing 5s infinite ease-in-out;
+}
+@keyframes move {
+    20%, 100% {
+        transform: translate(200px, 0);
+    }
+}
+.fa-spider {
+    margin: 0;
+    padding: 0;
+}
+.changePosition {
+    position: relative;
+    top: 82px;
+    left: 92px;
+    z-index: 1;
+}
+.marginTop {
+    margin-top: 1rem;
+}
+.padding {
+    padding: 1rem;
+}
+.navbar {
+    padding: .8rem;
+}
+.navbar-nav li {
+    padding-right: 20px;
+}
+.nav-link {
+    font-size: 1.1em !important;
+}
+.noPad {
+    padding-bottom: 0;
+}
+footer {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background-color: #515151;
+    color: gainsboro;
+}
+.fontSmall {
+    font-size: 75%;
+}
+
