@@ -43,13 +43,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/h2-console/**").permitAll()
+                .antMatchers("/", "/login", "/*.css", "/*.png", "static/*", "/base", "/h2-console/**").permitAll()
                 .antMatchers("/admin").access("hasAuthority('ADMIN')")
                 .anyRequest().authenticated()
-                .and().formLogin().loginPage("/login").permitAll()
-                .and().logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login").permitAll()
+                .and()
+                .formLogin().loginPage("/login").defaultSuccessUrl("/secure", true).permitAll()
+                .and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout").permitAll()
                 .and()
                 .httpBasic();
 
@@ -73,9 +73,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .permitAll();
 //    }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsServiceBean())
-                .passwordEncoder(passwordEncoder());
-    }
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userDetailsServiceBean()).passwordEncoder(passwordEncoder());
+//    }
 }

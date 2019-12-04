@@ -14,15 +14,17 @@ import java.util.Set;
 @Transactional
 @Service
 public class SSUserDetailsService implements UserDetailsService {
+
+    // field
     private UserRepository userRepository;
 
-    public SSUserDetailsService(UserRepository userRepository) {
+    // constructor
+    public SSUserDetailsService(UserRepository userRepository){
         this.userRepository = userRepository;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username)
-            throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
             User user = userRepository.findByUsername(username);
             if (user == null) {

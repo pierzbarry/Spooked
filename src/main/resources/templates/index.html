@@ -4,41 +4,15 @@
 <body class="background">
 
 <!--Navigation-->
-<nav th:replace="base :: navbar"></nav>
 
-<div th:each="message : ${messages}">
-    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-        <div class="card-header"><h6>From: [[${message.sentby}]] on [[${message.date}]]</h6></div>
-        <div class="card-body">
-            <p class="card-text">[[${message.content}]]</p>
-            <td>
-                <div>
-                    <div th:if="${message.imageurl} != null">
-                        <img th:src="${message.imageurl}" class="img-thumbnail">
-                    </div>
-                </div>
-            </td>
-        </div>
-    </div>
-    <a class="btn btn-danger btn-sm" th:href="@{/detail/{id}(id=${message.id})}"
-       role="button">Details</a>
-</div>
+<br />
+<br />
+this is my insecure page !!!
+<a href="/secure">secure page!!!</a>
 
-<!--Image Slider-->
-<div id="slides" class="carousel slide" data-ride="carousel">
-
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="https://i.imgur.com/1xo6H82.png" class="img-flip">
-            <!--            <div class="carousel-caption">-->
-            <!--                <h1 class="display-2">Brine</h1>-->
-            <!--            </div>-->
-        </div>
-    </div>
-</div>
 
 <!--Footer-->
-<footer th:replace="base :: footer"></footer>
+<!--<footer th:replace="base :: footer"></footer>-->
 
 <!--Javascript links-->
 <th:block th:replace="base :: jslinks"></th:block>

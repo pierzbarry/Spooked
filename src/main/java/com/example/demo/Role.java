@@ -6,6 +6,7 @@ import java.util.Collection;
 @Entity
 public class Role {
 
+    // fields
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -15,13 +16,15 @@ public class Role {
 
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
     private Collection<User> users;
-    public Role() {
-    }
 
-    public Role(String role) {
+    // constructors
+    public Role(){}
+
+    public Role(String role){
         this.role = role;
     }
 
+    // getters and setters
     public long getId() {
         return id;
     }

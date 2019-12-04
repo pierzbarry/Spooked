@@ -4,12 +4,11 @@ import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.Valid;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.Map;
 
 @Controller
@@ -19,7 +18,16 @@ public class HomeController {
     MessageRepository messageRepository;
 
     @Autowired
+    UserRepository userRepository;
+
+    @Autowired
     CloudinaryConfig cloudc;
+
+    public String secure(Principal principal, Model model){
+        String username = principal.getName();
+        model.addAttribute("user", userRepository.findByUsername(username));
+        return "secure";
+    }
 
     @RequestMapping("/")
     public String listMessages(Model model) {
@@ -81,9 +89,11 @@ public class HomeController {
         return "searchlist";
     }
 
-    @RequestMapping("/admin")
+    @RequestMapping("/secure")
     public String admin() {
         return "admin";
     }
+
+
 
 }
