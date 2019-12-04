@@ -22,29 +22,29 @@ public class HomeController {
     CloudinaryConfig cloudc;
 
     @RequestMapping("/")
-    public String listMessages(Model model){
+    public String listMessages(Model model) {
         model.addAttribute("messages", messageRepository.findAll());
         return "index";
     }
 
     @GetMapping("/add")
-    public String courseForm(Model model){
+    public String courseForm(Model model) {
         model.addAttribute("message", new Message());
         return "messageform";
     }
 
     @PostMapping("/process")
-    public String processForm(@ModelAttribute Message message, @RequestParam("file")MultipartFile file, @RequestParam("imageurl") String imageurl) {
+    public String processForm(@ModelAttribute Message message, @RequestParam("file") MultipartFile file, @RequestParam("imageurl") String imageurl) {
         if (!file.isEmpty()) {
             try {
-                Map uploadResult = cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype" , "auto"));
+                Map uploadResult = cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
                 message.setImageurl(uploadResult.get("url").toString());
 
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        if(file.isEmpty() && imageurl.equalsIgnoreCase("")){
+        if (file.isEmpty() && imageurl.equalsIgnoreCase("")) {
             message.setImageurl(null);
         }
         messageRepository.save(message);
@@ -53,32 +53,37 @@ public class HomeController {
     }
 
     @RequestMapping("/detail/{id}")
-    public String showMessage(@PathVariable("id") long id, Model model){
+    public String showMessage(@PathVariable("id") long id, Model model) {
         model.addAttribute("message", messageRepository.findById(id).get());
         return "show";
     }
 
     @RequestMapping("/update/{id}")
-    public String updateMessage(@PathVariable("id") long id, Model model){
+    public String updateMessage(@PathVariable("id") long id, Model model) {
         model.addAttribute("message", messageRepository.findById(id).get());
         return "messageform";
     }
 
     @RequestMapping("/delete/{id}")
-    public String delMessage(@PathVariable("id") long id){
+    public String delMessage(@PathVariable("id") long id) {
         messageRepository.deleteById(id);
         return "redirect:/";
     }
 
     @RequestMapping("/login")
-    public String login(){
+    public String login() {
         return "login";
     }
 
     @PostMapping("/searchlist")
-    public String search(Model model, @RequestParam("searchString") String search){
+    public String search(Model model, @RequestParam("searchString") String search) {
         model.addAttribute("messages", messageRepository.findByContentContainingIgnoreCaseOrDateContainingIgnoreCaseOrSentbyContainingIgnoreCase(search, search, search));
         return "searchlist";
+    }
+
+    @RequestMapping("/admin")
+    public String admin() {
+        return "admin";
     }
 
 }

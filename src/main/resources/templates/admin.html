@@ -6,23 +6,13 @@
 <!--Navigation-->
 <nav th:replace="base :: navbar"></nav>
 
-<div th:each="message : ${messages}">
-    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-        <div class="card-header"><h6>From: [[${message.sentby}]] on [[${message.date}]]</h6></div>
-        <div class="card-body">
-            <p class="card-text">[[${message.content}]]</p>
-            <td>
-                <div>
-                    <div th:if="${message.imageurl} != null">
-                        <img th:src="${message.imageurl}" class="img-thumbnail">
-                    </div>
-                </div>
-            </td>
-        </div>
+<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+    <div class="card-header"><h6>From: on </h6></div>
+    <div class="card-body">
+        <p class="card-text"></p>
     </div>
-    <a class="btn btn-danger btn-sm" th:href="@{/detail/{id}(id=${message.id})}"
-       role="button">Details</a>
 </div>
+
 
 <!--Image Slider-->
 <div id="slides" class="carousel slide" data-ride="carousel">
